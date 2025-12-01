@@ -1,0 +1,32 @@
+[project]
+name = "fast-clean-api"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi==0.122.0",
+  "uvicorn[standard]==0.37.0",
+  "pydantic-settings==2.8.0",
+  "sqlalchemy==2.0.44",
+  "alembic==1.17.0",
+  "asyncpg==0.30.0",
+  "httpx==0.28.1",
+  "aiosqlite==0.21.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-asyncio",
+  "black",
+  "ruff",
+  "isort",
+  "mypy"
+]
+
+[tool.mypy]
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+# All the fixture will use the same event loop (for all the scope)
+asyncio_default_fixture_loop_scope = "session"
+asyncio_mode = "auto"
