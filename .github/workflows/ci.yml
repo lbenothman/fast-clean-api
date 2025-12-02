@@ -67,7 +67,7 @@ jobs:
             docker run --name test-container \
               -e DB_NAME=fast-clean-api \
               $IMAGE_REGISTRY/$IMAGE_NAME:$IMAGE_TAG_SHA \
-              pytest --cov=src/ --cov-report=term-missing
+              pytest --cov=. --cov-report=term-missing
 
         - name: Push images (only on main)
           if: github.ref == 'refs/heads/main'
