@@ -1,0 +1,34 @@
+name:
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+permissions:
+  contents: read
+  packages: write
+env:
+  IMAGE_REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_TAG_SHA: ${{ github.sha }}
+  IMAGE_TAG_LATEST: latest
+  APP_PORT: 8000
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/astral-sh/uv:python3.13-bookworm-slim
+      options: --user root
+    defaults:
+      run:
+        working-directory: src/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ruff with uvx from PyPI
+        run: |
+          uvx --from ruff==0.12.0 ruff check .
+      - name: Run mypy
+        run: |
+          uv sync --extra dev && uv run mypy . --explicit-package-bases
