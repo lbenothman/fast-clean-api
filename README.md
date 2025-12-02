@@ -173,22 +173,27 @@ Docker and Docker Compose (recommended)
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd <project-directory>
+git clone git@github.com:lbenothman/fast-clean-api.git
+cd fast-clean-api
 ```
 
-2. Build and start the services:
+2. Create a new .env file, based on .env.template and provided the needed values:
+```bash
+cp .env.template .env
+```
+
+3. Build and start the services:
 ```bash
 make build
 make upd
 ```
 
-3. Run database migrations:
+4. Run database migrations:
 ```bash
 make alembic-db-upgrade
 ```
 
-4. Access the API:
+5. Access the API:
 - API: http://localhost:8000
 - Interactive Docs (Swagger): http://localhost:8000/docs
 - Alternative Docs (ReDoc): http://localhost:8000/redoc

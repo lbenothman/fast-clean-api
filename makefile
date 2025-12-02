@@ -9,9 +9,9 @@ SRC_DIR=src
 
 # --- Targets ---
 
-.PHONY: lock
+.PHONY: uv-lock
 # Generate or update uv.lock from pyproject.toml in the source folder
-lock:
+uv-lock:
 	@echo "Generating uv.lock in $(SRC_DIR)/..."
 	uv lock --directory $(SRC_DIR)
 
