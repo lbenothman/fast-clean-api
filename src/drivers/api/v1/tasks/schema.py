@@ -16,8 +16,8 @@ class CreateTaskRequest(BaseModel):
     priority: Priority = Field(..., description="Task priority")
     due_date: datetime | None = Field(None, description="Task due date")
 
-    class Config:
-        json_schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "title": "Complete project documentation",
                 "description": "Write comprehensive documentation for the FastAPI Clean Architecture tutorial",
@@ -25,6 +25,7 @@ class CreateTaskRequest(BaseModel):
                 "due_date": "2024-12-31T23:59:59Z",
             }
         }
+    }
 
 
 class UpdateTaskRequest(BaseModel):
@@ -38,8 +39,8 @@ class UpdateTaskRequest(BaseModel):
     priority: Priority | None = Field(None, description="Task priority")
     due_date: datetime | None = Field(None, description="Task due date")
 
-    class Config:
-        json_schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "title": "Updated task title",
                 "description": "Updated task description",
@@ -47,6 +48,7 @@ class UpdateTaskRequest(BaseModel):
                 "priority": "medium",
             }
         }
+    }
 
 
 class TaskResponse(BaseModel):
@@ -61,8 +63,8 @@ class TaskResponse(BaseModel):
     created_at: datetime = Field(..., description="Task creation timestamp")
     updated_at: datetime = Field(..., description="Task last update timestamp")
 
-    class Config:
-        json_schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "id": "123e4567-e89b-12d3-a456-426614174000",
                 "title": "Complete project documentation",
@@ -74,6 +76,7 @@ class TaskResponse(BaseModel):
                 "updated_at": "2024-01-01T12:00:00Z",
             }
         }
+    }
 
 
 class ErrorResponse(BaseModel):
