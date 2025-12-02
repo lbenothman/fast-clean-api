@@ -77,4 +77,4 @@ Drivers (API) → Use Cases → Ports (interfaces) → Domain (entities)
 - **[Ports Layer](../ports/README.md)** - Interfaces used by use cases
 - **[Adapters Layer](../adapters/repositories/README.md)** - Repository implementations
 - **[Drivers Layer](../drivers/README.md)** - API layer that calls use cases
-- **[Main README](../README.md)** - Complete architecture overview
+- **[Main README](../../README.md)** - Complete architecture overview

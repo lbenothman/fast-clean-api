@@ -109,4 +109,4 @@ Register handlers for each domain exception type:
 - **[Ports Layer](../ports/README.md)** - Interfaces
 - **[Use Cases Layer](../use_cases/README.md)** - Application operations
 - **[Adapters Layer](../adapters/repositories/README.md)** - Persistence
-- **[Main README](../README.md)** - Complete architecture overview
+- **[Main README](../../README.md)** - Complete architecture overview

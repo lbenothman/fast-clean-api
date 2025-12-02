@@ -81,4 +81,4 @@ Use Cases → depend on → TaskRepositoryInterface (Port)
 - **[Domain Layer](../../domain/README.md)** - Entities stored by repositories
 - **[Ports Layer](../../ports/README.md)** - Interfaces implemented by adapters
 - **[Use Cases Layer](../../use_cases/README.md)** - Consumers of repositories
-- **[Main README](../../README.md)** - Complete architecture overview
+- **[Main README](../../../README.md)** - Complete architecture overview

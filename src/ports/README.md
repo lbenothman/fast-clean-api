@@ -53,4 +53,4 @@ Adapters (implementations) ← Outer layer implements this
 - **[Domain Layer](../domain/README.md)** - Entities used in port signatures
 - **[Use Cases Layer](../use_cases/README.md)** - Consumers of ports
 - **[Adapters Layer](../adapters/repositories/README.md)** - Port implementations
-- **[Main README](../README.md)** - Complete architecture overview
+- **[Main README](../../README.md)** - Complete architecture overview

@@ -100,7 +100,7 @@ src/
 - Business logic lives here
 - Framework-agnostic
 
-📖 **[Read detailed Domain documentation](domain/README.md)**
+📖 **[Read detailed Domain documentation](src/domain/README.md)**
 
 ### 2. Ports Layer (Interfaces)
 
@@ -111,7 +111,7 @@ src/
 - No implementation details
 - Defines what operations are needed, not how
 
-📖 **[Read detailed Ports documentation](ports/README.md)**
+📖 **[Read detailed Ports documentation](src/ports/README.md)**
 
 ### 3. Use Cases Layer (Application Business Logic)
 
@@ -123,7 +123,7 @@ src/
 - Constructor injection for dependencies
 - Single `execute()` method
 
-📖 **[Read detailed Use Cases documentation](use_cases/README.md)**
+📖 **[Read detailed Use Cases documentation](src/use_cases/README.md)**
 
 ### 4. Adapters Layer (Infrastructure)
 
@@ -134,7 +134,7 @@ src/
 - Handles ORM models and database operations
 - Converts between domain entities and persistence models
 
-📖 **[Read detailed Adapters documentation](adapters/repositories/README.md)**
+📖 **[Read detailed Adapters documentation](src/adapters/repositories/README.md)**
 
 ### 5. Drivers Layer (External Interfaces)
 
@@ -146,7 +146,7 @@ src/
 - Exception handling and HTTP status mapping
 - Dependency injection wiring
 
-📖 **[Read detailed Drivers documentation](drivers/README.md)**
+📖 **[Read detailed Drivers documentation](src/drivers/README.md)**
 
 ## Tech Stack
 

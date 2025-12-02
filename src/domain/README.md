@@ -113,4 +113,4 @@ All layers depend **inward** toward the domain. The domain depends on nothing.
 - **[Ports Layer](../ports/README.md)** - Interfaces for domain operations
 - **[Use Cases Layer](../use_cases/README.md)** - Domain orchestration
 - **[Adapters Layer](../adapters/repositories/README.md)** - Domain persistence
-- **[Main README](../README.md)** - Complete architecture overview
+- **[Main README](../../README.md)** - Complete architecture overview
