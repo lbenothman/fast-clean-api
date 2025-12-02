@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from domain.entities.task import Task
-from domain.exceptions.task_exception import TaskCannotBeCompleted, TaskNotFound
+from domain.exceptions.task_exception import TaskCannotBeCompleted, TaskNotFound, TaskUpdateFailed
 from ports.task_repository_interface import TaskRepositoryInterface
 
 
@@ -24,6 +24,6 @@ class CompleteTaskUseCase:
         )
 
         if updated_count == 0:
-            raise TaskNotFound(str(task_id))
+            raise TaskUpdateFailed(str(task_id))
 
         return task

@@ -27,3 +27,11 @@ class TaskCannotBeDeleted(TaskException):
     def __init__(self, task_id: str) -> None:
         self.task_id = task_id
         super().__init__(f"Task with id={task_id} cannot be deleted")
+
+
+class TaskUpdateFailed(TaskException):
+    """Raised when a task update operation fails."""
+
+    def __init__(self, task_id: str) -> None:
+        self.task_id = task_id
+        super().__init__(f"Task with id={task_id} could not be updated, please try again")

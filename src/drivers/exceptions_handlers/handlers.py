@@ -8,7 +8,7 @@ from domain.exceptions.common import (
     EntityNotFound,
     InvalidEntityReference,
 )
-from domain.exceptions.task_exception import TaskCannotBeCompleted, TaskCannotBeDeleted
+from domain.exceptions.task_exception import TaskCannotBeCompleted, TaskCannotBeDeleted, TaskUpdateFailed
 
 
 def add_handlers(app: FastAPI) -> None:
@@ -20,6 +20,7 @@ def add_handlers(app: FastAPI) -> None:
     app.add_exception_handler(InvalidEntityReference, http_422_exception_handler)
     app.add_exception_handler(TaskCannotBeCompleted, http_400_exception_handler)
     app.add_exception_handler(TaskCannotBeDeleted, http_400_exception_handler)
+    app.add_exception_handler(TaskUpdateFailed, http_409_exception_handler)
 
 
 async def pydantic_validation_exception_handler(
