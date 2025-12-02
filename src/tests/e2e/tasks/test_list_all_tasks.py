@@ -29,9 +29,18 @@ async def test_list_all_tasks_with_single_task(
     assert len(data["items"]) == 1
     assert data["items"][0]["id"] == str(pending_task_with_medium_priority_fixture.id)
     assert data["items"][0]["title"] == pending_task_with_medium_priority_fixture.title
-    assert data["items"][0]["description"] == pending_task_with_medium_priority_fixture.description
-    assert data["items"][0]["status"] == pending_task_with_medium_priority_fixture.status.value
-    assert data["items"][0]["priority"] == pending_task_with_medium_priority_fixture.priority.value
+    assert (
+        data["items"][0]["description"]
+        == pending_task_with_medium_priority_fixture.description
+    )
+    assert (
+        data["items"][0]["status"]
+        == pending_task_with_medium_priority_fixture.status.value
+    )
+    assert (
+        data["items"][0]["priority"]
+        == pending_task_with_medium_priority_fixture.priority.value
+    )
     assert "page" in data
     assert "limit" in data
     assert "links" in data
@@ -39,8 +48,9 @@ async def test_list_all_tasks_with_single_task(
 
 @pytest.mark.asyncio
 async def test_list_all_tasks_with_multiple_tasks(
-    async_client_fixture: AsyncClient, pending_task_with_medium_priority_fixture,
-        completed_task_with_low_priority_fixture
+    async_client_fixture: AsyncClient,
+    pending_task_with_medium_priority_fixture,
+    completed_task_with_low_priority_fixture,
 ):
     response = await async_client_fixture.get("/api/v1/tasks")
 
@@ -59,8 +69,9 @@ async def test_list_all_tasks_with_multiple_tasks(
 
 @pytest.mark.asyncio
 async def test_list_all_tasks_filter_by_status(
-    async_client_fixture: AsyncClient, pending_task_with_medium_priority_fixture,
-        completed_task_with_low_priority_fixture
+    async_client_fixture: AsyncClient,
+    pending_task_with_medium_priority_fixture,
+    completed_task_with_low_priority_fixture,
 ):
     response = await async_client_fixture.get(
         "/api/v1/tasks", params={"status_filter": TaskStatus.COMPLETED.value}
@@ -79,8 +90,9 @@ async def test_list_all_tasks_filter_by_status(
 
 @pytest.mark.asyncio
 async def test_list_all_tasks_filter_by_priority(
-    async_client_fixture: AsyncClient, pending_task_with_medium_priority_fixture,
-        completed_task_with_low_priority_fixture
+    async_client_fixture: AsyncClient,
+    pending_task_with_medium_priority_fixture,
+    completed_task_with_low_priority_fixture,
 ):
     response = await async_client_fixture.get(
         "/api/v1/tasks", params={"priority_filter": Priority.MEDIUM.value}
@@ -98,8 +110,9 @@ async def test_list_all_tasks_filter_by_priority(
 
 @pytest.mark.asyncio
 async def test_list_all_tasks_filter_by_status_and_priority(
-    async_client_fixture: AsyncClient, pending_task_with_medium_priority_fixture,
-        completed_task_with_low_priority_fixture
+    async_client_fixture: AsyncClient,
+    pending_task_with_medium_priority_fixture,
+    completed_task_with_low_priority_fixture,
 ):
     response = await async_client_fixture.get(
         "/api/v1/tasks",
@@ -123,8 +136,9 @@ async def test_list_all_tasks_filter_by_status_and_priority(
 
 @pytest.mark.asyncio
 async def test_list_all_tasks_with_pagination(
-    async_client_fixture: AsyncClient, pending_task_with_medium_priority_fixture,
-        completed_task_with_low_priority_fixture
+    async_client_fixture: AsyncClient,
+    pending_task_with_medium_priority_fixture,
+    completed_task_with_low_priority_fixture,
 ):
     response = await async_client_fixture.get(
         "/api/v1/tasks", params={"page": 1, "limit": 1}

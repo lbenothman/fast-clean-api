@@ -4,7 +4,7 @@ from httpx import ASGITransport, AsyncClient
 from adapters.repositories.task_repositories.sql_alchemy_task_repository import (
     SqlAlchemyTaskRepository,
 )
-from domain.entities.task import Task, TaskStatus, Priority
+from domain.entities.task import Priority, Task, TaskStatus
 from drivers.main import app
 from tests.utilis import create_task, truncate_tables
 
@@ -30,14 +30,20 @@ async def task_repository_fixture(db_session_fixture) -> SqlAlchemyTaskRepositor
 
 
 @pytest_asyncio.fixture()
-async def pending_task_with_medium_priority_fixture(task_repository_fixture, db_session_fixture) -> Task:
+async def pending_task_with_medium_priority_fixture(
+    task_repository_fixture, db_session_fixture
+) -> Task:
     task = await task_repository_fixture.save(entity=create_task(index=1))
     await db_session_fixture.commit()
     return task
 
 
 @pytest_asyncio.fixture()
-async def completed_task_with_low_priority_fixture(task_repository_fixture, db_session_fixture) -> Task:
-    task = await task_repository_fixture.save(entity=create_task(index=2, status=TaskStatus.COMPLETED, priority=Priority.LOW))
+async def completed_task_with_low_priority_fixture(
+    task_repository_fixture, db_session_fixture
+) -> Task:
+    task = await task_repository_fixture.save(
+        entity=create_task(index=2, status=TaskStatus.COMPLETED, priority=Priority.LOW)
+    )
     await db_session_fixture.commit()
     return task

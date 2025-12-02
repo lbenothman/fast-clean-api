@@ -7,15 +7,16 @@ from domain.value_objects.create_task_data import CreateTaskData
 from drivers.api.v1.tasks.schema import (
     CreateTaskRequest,
     ErrorResponse,
+    TaskListParams,
     TaskListResponse,
     TaskResponse,
-    TaskListParams,
 )
 from drivers.dependencies.hateoas import hateoas_dependency
 from drivers.dependencies.use_cases import (
     get_complete_task_usecase,
     get_create_task_usecase,
-    get_get_all_tasks_usecase)
+    get_get_all_tasks_usecase,
+)
 from use_cases.tasks.complete_task_usecase import CompleteTaskUseCase
 from use_cases.tasks.create_task_usecase import CreateTaskUseCase
 from use_cases.tasks.get_all_tasks_usecase import ListAllTasksUseCase
@@ -59,7 +60,9 @@ async def list_all_tasks(
     hateoas=Depends(hateoas_dependency),
     get_all_tasks_usecase: ListAllTasksUseCase = Depends(get_get_all_tasks_usecase),
 ) -> TaskListResponse:
-    result= await get_all_tasks_usecase.execute(params=params.model_dump(exclude_none=True, exclude_unset=True))
+    result = await get_all_tasks_usecase.execute(
+        params=params.model_dump(exclude_none=True, exclude_unset=True)
+    )
     return hateoas(items=result.get_items_as_dict(), total_count=result.count)
 
 

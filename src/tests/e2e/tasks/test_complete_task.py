@@ -6,8 +6,7 @@ from domain.entities.task import Task, TaskStatus
 
 @pytest.mark.asyncio
 async def test_complete_task_success(
-    async_client_fixture: AsyncClient,
-        pending_task_with_medium_priority_fixture: Task
+    async_client_fixture: AsyncClient, pending_task_with_medium_priority_fixture: Task
 ):
     response = await async_client_fixture.patch(
         f"/api/v1/tasks/{pending_task_with_medium_priority_fixture.id}/complete",
@@ -39,8 +38,7 @@ async def test_complete_task_not_found(
 
 @pytest.mark.asyncio
 async def test_complete_already_completed_task(
-    async_client_fixture: AsyncClient,
-        completed_task_with_low_priority_fixture: Task
+    async_client_fixture: AsyncClient, completed_task_with_low_priority_fixture: Task
 ):
     response = await async_client_fixture.patch(
         f"/api/v1/tasks/{completed_task_with_low_priority_fixture.id}/complete",

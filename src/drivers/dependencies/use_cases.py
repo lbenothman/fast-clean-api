@@ -18,6 +18,7 @@ def get_complete_task_usecase(
 ) -> CompleteTaskUseCase:
     return CompleteTaskUseCase(repository)
 
+
 def get_get_all_tasks_usecase(
     repository: TaskRepositoryInterface = Depends(get_task_repository),
 ) -> ListAllTasksUseCase:

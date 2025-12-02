@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import Mock
+
+import pytest
 from httpx import QueryParams
 
 from drivers.helpers.hetoas import ListingParams, create_hateoas_response
@@ -7,13 +8,16 @@ from drivers.helpers.hetoas import ListingParams, create_hateoas_response
 
 @pytest.fixture
 def mock_request():
-    def _create_request(url: str, query_params: dict = None):
+    def _create_request(url: str, query_params: dict | None = None):
         request = Mock()
         request.url = Mock()
         request.url.__str__ = Mock(return_value=url)
-        request.url.remove_query_params = Mock(return_value=Mock(__str__=Mock(return_value=url.split("?")[0])))
+        request.url.remove_query_params = Mock(
+            return_value=Mock(__str__=Mock(return_value=url.split("?")[0]))
+        )
         request.query_params = QueryParams(query_params or {})
         return request
+
     return _create_request
 
 
@@ -44,7 +48,9 @@ async def test_create_hateoas_response_first_page_with_next(mock_request, sample
 
 
 @pytest.mark.asyncio
-async def test_create_hateoas_response_middle_page_with_next_and_previous(mock_request, sample_items):
+async def test_create_hateoas_response_middle_page_with_next_and_previous(
+    mock_request, sample_items
+):
     request = mock_request("http://test/api/v1/tasks", {"page": "2", "limit": "2"})
     listing_params = ListingParams(page=2, limit=2)
     total_count = 10
@@ -62,7 +68,9 @@ async def test_create_hateoas_response_middle_page_with_next_and_previous(mock_r
 
 
 @pytest.mark.asyncio
-async def test_create_hateoas_response_last_page_with_previous(mock_request, sample_items):
+async def test_create_hateoas_response_last_page_with_previous(
+    mock_request, sample_items
+):
     request = mock_request("http://test/api/v1/tasks", {"page": "5", "limit": "2"})
     listing_params = ListingParams(page=5, limit=2)
     total_count = 10
@@ -80,7 +88,9 @@ async def test_create_hateoas_response_last_page_with_previous(mock_request, sam
 
 
 @pytest.mark.asyncio
-async def test_create_hateoas_response_single_page_no_next_or_previous(mock_request, sample_items):
+async def test_create_hateoas_response_single_page_no_next_or_previous(
+    mock_request, sample_items
+):
     request = mock_request("http://test/api/v1/tasks", {"page": "1", "limit": "10"})
     listing_params = ListingParams(page=1, limit=10)
     total_count = 2
@@ -101,7 +111,12 @@ async def test_create_hateoas_response_single_page_no_next_or_previous(mock_requ
 async def test_create_hateoas_response_with_filters(mock_request, sample_items):
     request = mock_request(
         "http://test/api/v1/tasks",
-        {"page": "1", "limit": "2", "status_filter": "pending", "priority_filter": "high"}
+        {
+            "page": "1",
+            "limit": "2",
+            "status_filter": "pending",
+            "priority_filter": "high",
+        },
     )
     listing_params = ListingParams(page=1, limit=2)
     total_count = 6

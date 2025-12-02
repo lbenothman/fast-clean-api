@@ -19,9 +19,9 @@ class CompleteTaskUseCase:
             raise TaskCannotBeCompleted(str(task_id))
 
         task.mark_as_completed()
-        updated_count = await self.repository.update(fields_to_update={
-            "status": task.status
-        })
+        updated_count = await self.repository.update(
+            fields_to_update={"status": task.status}
+        )
 
         if updated_count == 0:
             raise TaskNotFound(str(task_id))

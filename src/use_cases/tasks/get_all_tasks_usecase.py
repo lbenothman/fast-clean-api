@@ -1,6 +1,7 @@
+from typing import Any, Dict
+
 from domain.value_objects.list_entity import ListEntity
 from ports.task_repository_interface import TaskRepositoryInterface
-from typing import Any, Dict
 
 
 class ListAllTasksUseCase:

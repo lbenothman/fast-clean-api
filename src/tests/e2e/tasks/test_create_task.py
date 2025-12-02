@@ -5,14 +5,12 @@ from domain.entities.task import TaskStatus
 
 
 @pytest.mark.asyncio
-async def test_create_client_success(
-    async_client_fixture: AsyncClient
-):
+async def test_create_client_success(async_client_fixture: AsyncClient):
     new_client = {
         "title": "My task title",
         "description": "This is my task description",
         "priority": "low",
-        "due_date": "2027-01-01T00:00:00Z"
+        "due_date": "2027-01-01T00:00:00Z",
     }
 
     # Inject JWT token via headers

@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from uuid import UUID
+from typing import Any
 
 from domain.entities.task import Task
 from domain.value_objects.ordering import Ordering
-from typing import Any
+
 
 class TaskRepositoryInterface(ABC):
     @abstractmethod
@@ -38,13 +38,6 @@ class TaskRepositoryInterface(ABC):
     async def update(
         self,
         fields_to_update: dict[str, Any],
-        **filters,
-    ) -> int:
-        pass
-
-    @abstractmethod
-    async def delete(
-        self,
         **filters,
     ) -> int:
         pass

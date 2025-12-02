@@ -11,6 +11,9 @@ class InMemoryTaskRepository(InMemoryAbstractRepository[Task], TaskRepositoryInt
             return False
         if "status_filter" in filters and entity.status != filters["status_filter"]:
             return False
-        if "priority_filter" in filters and entity.priority != filters["priority_filter"]:
+        if (
+            "priority_filter" in filters
+            and entity.priority != filters["priority_filter"]
+        ):
             return False
         return True
