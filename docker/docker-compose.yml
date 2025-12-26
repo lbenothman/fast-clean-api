@@ -24,7 +24,7 @@ services:
     <<: *common-service
     container_name: fast-clean-api
     ports:
-      - "8000:8000"
+      - "8002:8000"
     env_file:
       - ../.env
 
@@ -32,7 +32,7 @@ services:
     <<: *common-service
     container_name: fast-clean-api-test
     ports:
-      - "8001:8000"
+      - "8003:8000"
     env_file:
       - ../.env.test
 
